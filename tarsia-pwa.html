@@ -229,7 +229,8 @@ hr.sep{border:none;border-top:1px solid var(--bd);margin:2px 0}
     <div class="rr"><input type="range" min="70" max="200" value="110" id="s-ps" oninput="document.getElementById('psv').textContent=this.value;sar()"><span class="rv" id="psv">110</span></div>
     <hr class="sep">
     <hr class="sep">
-    <hr class="sep"><div class="lbl" data-i18n="logo_lbl">Logo</div><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><img id="logo-preview" src="" style="height:36px;width:auto;max-width:90px;border:1px solid var(--bd);border-radius:4px;background:#f5f6fa;padding:2px;object-fit:contain" alt=""><div style="display:flex;flex-direction:column;gap:4px"><button class="sbb sbb-n" style="padding:4px 8px;font-size:11px" onclick="importLogo()" data-i18n="logo_custom">Personnaliser</button><button class="sbb" style="padding:4px 8px;font-size:11px;background:#e8f5ee;color:var(--gn)" onclick="resetLogo()" data-i18n="logo_reset">Restaurer Oceanic</button></div></div><label class="ckr"><input type="checkbox" id="s-logo" checked onchange="G.logoEnabled=this.checked;saveLS();"><span data-i18n="lbl_logo_show">Afficher logo</span></label><label class="ckr" style="margin-top:3px"><input type="checkbox" id="s-logo-back" checked onchange="G.logoPrintBack=this.checked;saveLS();"><span data-i18n="logo_back">Logo au verso</span></label><label class="ckr" style="margin-top:3px"><input type="checkbox" id="s-back-nolines" onchange="G.backNoLines=this.checked;saveLS();"><span data-i18n="back_nolines">Verso sans contours</span></label><hr class="sep"><button class="sbb sbb-g" onclick="exportSVGSol()" data-i18n="btn_export_sol">⬇ SVG Solution</button>
+    <hr class="sep"><div class="lbl" data-i18n="logo_lbl">Logo</div><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><img id="logo-preview" src="" style="height:36px;width:auto;max-width:90px;border:1px solid var(--bd);border-radius:4px;background:#f5f6fa;padding:2px;object-fit:contain" alt=""><div style="display:flex;flex-direction:column;gap:4px"><button class="sbb sbb-n" style="padding:4px 8px;font-size:11px" onclick="importLogo()" data-i18n="logo_custom">Personnaliser</button><button class="sbb" style="padding:4px 8px;font-size:11px;background:#e8f5ee;color:var(--gn)" onclick="resetLogo()" data-i18n="logo_reset">Restaurer Oceanic</button></div></div><label class="ckr"><input type="checkbox" id="s-logo" checked onchange="G.logoEnabled=this.checked;saveLS();"><span data-i18n="lbl_logo_show">Afficher logo</span></label><label class="ckr" style="margin-top:3px"><input type="checkbox" id="s-logo-back" checked onchange="G.logoPrintBack=this.checked;saveLS();"><span data-i18n="logo_back">Logo au verso</span></label><label class="ckr" style="margin-top:3px"><input type="checkbox" id="s-back-nolines" onchange="G.backNoLines=this.checked;saveLS();"><span data-i18n="back_nolines">Verso sans contours</span></label>
+<label class="lbl" style="margin-top:8px;display:flex;align-items:center;gap:8px"><span data-i18n="logo_opacity" style="white-space:nowrap">Opacité logo</span><input type="range" min="0" max="1" step="0.05" value="0.28" id="s-logo-opacity" style="flex:1;min-width:0" oninput="G.logoOpacity=+this.value;document.getElementById('logo-opacity-val').textContent=Math.round(this.value*100)+'%';saveLS();renderAll();"><span id="logo-opacity-val" style="min-width:32px;text-align:right;font-size:11px">28%</span></label><hr class="sep"><button class="sbb sbb-g" onclick="exportSVGSol()" data-i18n="btn_export_sol">⬇ SVG Solution</button>
     <button class="sbb sbb-g" style="margin-top:4px" onclick="exportSVGShuf()" data-i18n="btn_export_shuf">⬇ SVG Mélangé</button>
     <button class="sbb sbb-g" style="margin-top:4px" onclick="exportBackSVG()" data-i18n="btn_export_back">⬇ Exporter verso SVG</button>
     <button class="sbb sbb-n" style="margin-top:4px" onclick="doLoad()">📂 Charger .json</button>
@@ -282,6 +283,21 @@ hr.sep{border:none;border-top:1px solid var(--bd);margin:2px 0}
 </div></div>
 
 <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -360,7 +376,7 @@ var LANGS={
     lbl_fs:'Taille texte',lbl_ps:'Taille pièces',
     logo_lbl:'Logo',lbl_logo_show:'Afficher logo',
     logo_custom:'Personnaliser',logo_reset:'Restaurer Oceanic',
-    logo_back:'Logo au verso',back_nolines:'Verso sans contours',
+    logo_opacity:'Opacité logo',logo_back:'Logo au verso',back_nolines:'Verso sans contours',
     modal_ltx_title:'∑ Guide LaTeX',
     modal_help_title:'? Guide d\'utilisation',
     help_tip1_title:'Saisie rapide des paires',
@@ -405,7 +421,7 @@ var LANGS={
     lbl_fs:'Text size',lbl_ps:'Piece size',
     logo_lbl:'Logo',lbl_logo_show:'Show logo',
     logo_custom:'Customise',logo_reset:'Restore Oceanic',
-    logo_back:'Logo on back',back_nolines:'Back without outlines',
+    logo_opacity:'Logo opacity',logo_back:'Logo on back',back_nolines:'Back without outlines',
     modal_ltx_title:'∑ LaTeX guide',
     modal_help_title:'? User guide',
     help_tip1_title:'Quick pair entry',
@@ -450,7 +466,7 @@ var LANGS={
     lbl_fs:'Tamaño texto',lbl_ps:'Tamaño piezas',
     logo_lbl:'Logo',lbl_logo_show:'Mostrar logo',
     logo_custom:'Personalizar',logo_reset:'Restaurar Oceanic',
-    logo_back:'Logo al dorso',back_nolines:'Reverso sin contornos',
+    logo_opacity:'Opacidad logo',logo_back:'Logo al dorso',back_nolines:'Reverso sin contornos',
     modal_ltx_title:'∑ Guía LaTeX',
     modal_help_title:'? Guía de uso',
     help_tip1_title:'Entrada rápida de pares',
@@ -488,7 +504,7 @@ var SQ3=Math.sqrt(3);
 var LS='tarsia5';
 var VIEW='sol';
 var SS=null;
-var G={shapeType:'tri',pairs:[],nextId:1,logo:null,logoEnabled:true,logoPrintBack:true,backNoLines:false};
+var G={shapeType:'tri',pairs:[],nextId:1,logo:null,logoEnabled:true,logoPrintBack:true,backNoLines:false,logoOpacity:0.28};
 
 var LTXEX=[
   {c:'\\frac{3}{4}',l:'Fraction'},{c:'\\sqrt{x+1}',l:'Racine'},
@@ -526,17 +542,17 @@ function printSol(){
     if(!svg){VIEW=prev;renderAll();return;}
     var svgStr=new XMLSerializer().serializeToString(svg);
     VIEW=prev;if(prev!=='sol')renderAll();
-    // Inject katex-mathml hide CSS
-    var kCSS='<defs><style>.katex-mathml{position:absolute;clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px;overflow:hidden;}</style></defs>';
-    svgStr=svgStr.replace(/(<svg[^>]*>)/,'$1'+kCSS);
+    var hideCSS='.katex-mathml{position:absolute;clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px;overflow:hidden;}';
+    svgStr=svgStr.replace(/(<svg[^>]*>)/,'$1<defs><style>'+hideCSS+'</style></defs>');
     var html='<!DOCTYPE html><html><head><title>Tarsia</title>'+
       '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">'+
-      '<style>body{margin:20px;background:white}svg{max-width:100%;height:auto}</style>'+
-      '</head><body>'+svgStr+'</body></html>';
+      '<style>@media print{@page{margin:1cm}}body{margin:20px;background:white}svg{max-width:100%;height:auto}</style>'+
+      '</head><body>'+svgStr+
+      '<script>document.fonts.ready.then(function(){setTimeout(function(){window.print();},200);});<\/script>'+
+      '</body></html>';
     var win=window.open('','_blank');
     if(!win){toast('Autorisez les popups pour imprimer');return;}
     win.document.open();win.document.write(html);win.document.close();
-    setTimeout(function(){if(win.print)win.print();},400);
   },350);
 }
 function printShuf(){
@@ -546,17 +562,17 @@ function printShuf(){
     if(!svg){VIEW=prev;renderAll();return;}
     var svgStr=new XMLSerializer().serializeToString(svg);
     VIEW=prev;if(prev!=='shuf')renderAll();
-    // Inject katex-mathml hide CSS
-    var kCSS='<defs><style>.katex-mathml{position:absolute;clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px;overflow:hidden;}</style></defs>';
-    svgStr=svgStr.replace(/(<svg[^>]*>)/,'$1'+kCSS);
+    var hideCSS='.katex-mathml{position:absolute;clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px;overflow:hidden;}';
+    svgStr=svgStr.replace(/(<svg[^>]*>)/,'$1<defs><style>'+hideCSS+'</style></defs>');
     var html='<!DOCTYPE html><html><head><title>Tarsia</title>'+
       '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">'+
-      '<style>body{margin:20px;background:white}svg{max-width:100%;height:auto}</style>'+
-      '</head><body>'+svgStr+'</body></html>';
+      '<style>@media print{@page{margin:1cm}}body{margin:20px;background:white}svg{max-width:100%;height:auto}</style>'+
+      '</head><body>'+svgStr+
+      '<script>document.fonts.ready.then(function(){setTimeout(function(){window.print();},200);});<\/script>'+
+      '</body></html>';
     var win=window.open('','_blank');
     if(!win){toast('Autorisez les popups pour imprimer');return;}
     win.document.open();win.document.write(html);win.document.close();
-    setTimeout(function(){if(win.print)win.print();},400);
   },350);
 }
 document.addEventListener('DOMContentLoaded',function(){
@@ -581,7 +597,7 @@ function saveLS(){
     tit:v('s-tit'),aut:v('s-aut'),
     fill:v('c-fill'),str:v('c-str'),qC:v('c-q'),aC:v('c-a'),
     fs:v('s-fs'),ps:v('s-ps'),
-    logo:G.logo,logoEnabled:G.logoEnabled,logoPrintBack:G.logoPrintBack,backNoLines:G.backNoLines
+    logo:G.logo,logoEnabled:G.logoEnabled,logoPrintBack:G.logoPrintBack,backNoLines:G.backNoLines,logoOpacity:G.logoOpacity
   }))}catch(e){console.error('saveLS:',e);}
 }
 function loadLS(){
@@ -599,6 +615,7 @@ function loadLS(){
     if(d.ps){sv('s-ps',d.ps);sv('psv',d.ps)}
     if(d.logo!==undefined)G.logo=d.logo;
     if(d.logoEnabled!==undefined)G.logoEnabled=d.logoEnabled;
+    if(d.logoOpacity!==undefined){G.logoOpacity=d.logoOpacity;var opEl=document.getElementById('s-logo-opacity');var opLbl=document.getElementById('logo-opacity-val');if(opEl)opEl.value=d.logoOpacity;if(opLbl)opLbl.textContent=Math.round(d.logoOpacity*100)+'%';}
     if(d.logoPrintBack!==undefined)G.logoPrintBack=d.logoPrintBack;
     if(d.backNoLines!==undefined)G.backNoLines=d.backNoLines;
   }catch(e){}
@@ -886,8 +903,10 @@ function svgLbl(x,y,text,color,fs,isLatex,angleDeg,maxW,maxH,shapeD,shapeH){
   var fw=fwEff,fh=Math.max(fsEff*1.8,text.split('\n').length*fsEff*1.6);
   var cssRot=angleDeg?'transform:rotate('+angleDeg.toFixed(1)+'deg);transform-origin:center center;':'';
   var fhOuter=Math.max(fh,fs*2.5);
-  var fhUse=fh;return'<g'+rot+'>'+'<foreignObject x="'+(x-fw/2).toFixed(2)+'" y="'+(y-fhUse/2).toFixed(2)+'" width="'+fw+'" height="'+fhUse+'" overflow="visible">'+'<div xmlns="http://www.w3.org/1999/xhtml" class="kfo"'+'  data-tex="'+encodeURIComponent(text)+'" data-color="'+color+'" data-fs="'+fsEff.toFixed(1)+'" data-maxw="'+fw+'"'+'  style="width:'+fw+'px;height:'+fhUse+'px;display:block;font-size:'+fsEff.toFixed(1)+'px;color:'+color+';text-align:center;overflow:visible;">'+'</div>'+'</foreignObject>'+'</g>';
+  var fhUse=fh;var foTransform=angleDeg?' transform="rotate('+angleDeg.toFixed(1)+','+x.toFixed(2)+','+y.toFixed(2)+')'+'"':'';// Normalize angle to (-90,90] so text is never upside-down with CSS rotation
+var cssRot2=angleDeg?'transform:rotate('+angleDeg.toFixed(1)+'deg);transform-origin:50% 50%;':'';return'<foreignObject x="'+(x-fw/2).toFixed(2)+'" y="'+(y-fhUse/2).toFixed(2)+'" width="'+fw+'" height="'+fhUse+'" overflow="visible">'+'<div xmlns="http://www.w3.org/1999/xhtml" class="kfo"'+'  data-tex="'+encodeURIComponent(text)+'" data-color="'+color+'" data-fs="'+fsEff.toFixed(1)+'" data-maxw="'+fw+'" data-latex="1"'+'  style="width:'+fw+'px;height:'+fhUse+'px;display:block;font-size:'+fsEff.toFixed(1)+'px;color:'+color+';text-align:center;overflow:visible;'+(cssRot2||'')+'">'+'</div>'+'</foreignObject>';
 }
+
 
 function wrapTxt(s,max){
   if(!s)return[''];
@@ -1277,8 +1296,13 @@ function shufTri(o){
     s+='<polygon points="'+pts+'" fill="'+o.fill+'" stroke="'+o.stroke+'" stroke-width="1.8" stroke-linejoin="round"/>';
     
     // Labels: use origIdx's labels (they carry with the piece)
-    pl[origIdx].forEach(function(lb){s+=svgLbl(cx+lb.dx,cy+lb.dy,lb.text,lb.color,lb.fs,lb.isL,lb.ang,lb.mw)});
     s+='</g>';
+    var rotRad2=rot*Math.PI/180,cosR2=Math.cos(rotRad2),sinR2=Math.sin(rotRad2);
+    pl[origIdx].forEach(function(lb){
+      var lx2=lb.dx*cosR2-lb.dy*sinR2+cx,ly2=lb.dx*sinR2+lb.dy*cosR2+cy;
+      var absAng2=(lb.ang+rot+360)%360;if(absAng2>180)absAng2-=360;
+      s+=svgLbl(lx2,ly2,lb.text,lb.color,lb.fs,lb.isL,absAng2,lb.mw);
+    });
   });
   return{w:W,h:H,svg:s};
 }
@@ -1390,8 +1414,16 @@ function shufHex(o){
       ' '+(tOrig.ax+ddx).toFixed(1)+','+(tOrig.ay+ddy).toFixed(1)+
       ' '+(tOrig.bx+ddx).toFixed(1)+','+(tOrig.by+ddy).toFixed(1)+
       '" fill="'+o.fill+'" stroke="'+o.stroke+'" stroke-width="1.8" stroke-linejoin="round"/>';
-    hexPl[origIdx].forEach(function(lb){s+=svgLbl(pcx+lb.dx,pcy+lb.dy,lb.text,lb.color,lb.fs,lb.isL,lb.ang,lb.mw,lb.mxH)});
     s+='</g>';
+    // Render labels OUTSIDE the <g> with manually rotated positions
+    var rotRad=rot*Math.PI/180,cosR=Math.cos(rotRad),sinR=Math.sin(rotRad);
+    hexPl[origIdx].forEach(function(lb){
+      // Rotate label position around pcx,pcy by rot
+      var lx=lb.dx*cosR-lb.dy*sinR+pcx,ly=lb.dx*sinR+lb.dy*cosR+pcy;
+      // Absolute angle = original angle + piece rotation
+      var absAng=(lb.ang+rot+360)%360;if(absAng>180)absAng-=360;
+      s+=svgLbl(lx,ly,lb.text,lb.color,lb.fs,lb.isL,absAng,lb.mw,lb.mxH);
+    });
   });
   return{w:W,h:TH,svg:s};
 }
@@ -1429,8 +1461,13 @@ function shufRect(o){
     var ddx=posC*S-origC*S,ddy=posR*S-origR*S;
     s+='<rect x="'+(PAD+origC*S+ddx)+'" y="'+(PAD+origR*S+ddy)+'" width="'+S+'" height="'+S+'" fill="'+o.fill+'" stroke="'+o.stroke+'" stroke-width="2"/>';
     
-    spl[origIdx].forEach(function(lb){s+=svgLbl(posCX+lb.dx,posCY+lb.dy,lb.text,lb.color,lb.fs,lb.isL,lb.ang,lb.mw,lb.mxH,lb.sD,lb.sH)});
     s+='</g>';
+    var rotRad2=rot*Math.PI/180,cosR2=Math.cos(rotRad2),sinR2=Math.sin(rotRad2);
+    spl[origIdx].forEach(function(lb){
+      var lx2=lb.dx*cosR2-lb.dy*sinR2+posCX,ly2=lb.dx*sinR2+lb.dy*cosR2+posCY;
+      var absAng2=(lb.ang+rot+360)%360;if(absAng2>180)absAng2-=360;
+      s+=svgLbl(lx2,ly2,lb.text,lb.color,lb.fs,lb.isL,absAng2,lb.mw,lb.mxH,lb.sD,lb.sH);
+    });
   });
   return{w:W,h:H,svg:s};
 }
@@ -1546,55 +1583,29 @@ function svgLblExport(x,y,text,color,fs,isLatex,angleDeg,maxW,maxH,shapeD,shapeH
 function _doExportSVG(filename){
   var svg=qs('#psvg');
   if(!svg){toast('SVG non disponible');return;}
-  setTimeout(function(){
-    var s=new XMLSerializer().serializeToString(svg);
-    // Inject CSS to hide katex-mathml (visible in SVG without KaTeX stylesheet)
-    // and link KaTeX font CSS for proper rendering
-    var katexCSS='<defs><style>'+
-      '.katex-mathml{position:absolute;clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px;overflow:hidden;}'+
-      '.katex{font:normal 1.21em KaTeX_Main,Times New Roman,serif;line-height:1.2;}'+
-      '.katex .katex-html{white-space:nowrap;}'+
-      '</style></defs>';
-    // Insert after opening <svg ...> tag
-    s=s.replace(/(<svg[^>]*>)/, '$1'+katexCSS);
-    var blob=new Blob([s],{type:'image/svg+xml;charset=utf-8'});
-    var a=document.createElement('a');
-    a.href=URL.createObjectURL(blob);
-    a.download=(v('s-tit')||'tarsia')+'-'+filename+'.svg';
-    a.click();toast(t('btn_export')+' OK');
-  },300);
+  var svgStr=new XMLSerializer().serializeToString(svg);
+  // Inject KaTeX stylesheet link + hide rule for katex-mathml
+  // The <link> loads KaTeX fonts when SVG is opened in a browser
+  var katexLink='<?xml-stylesheet type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"?>';
+  var hideRule='<defs><style>'
+    +'.katex-mathml{position:absolute;clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px;overflow:hidden;}'
+    +'</style></defs>';
+  // Add xml-stylesheet PI before <svg>, inject hide rule after <svg> opening tag
+  svgStr=katexLink+'\n'+svgStr.replace(/(<svg[^>]*>)/,'$1'+hideRule);
+  var blob=new Blob([svgStr],{type:'image/svg+xml;charset=utf-8'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=(v('s-tit')||'tarsia')+'-'+filename+'.svg';
+  a.click();
+  toast(t('btn_export')+' OK');
 }
 function exportSVGSol(){
   var prev=VIEW;VIEW='sol';renderAll();
-  setTimeout(function(){
-    var svg=qs('#psvg');
-    if(!svg){VIEW=prev;renderAll();return;}
-    var s=new XMLSerializer().serializeToString(svg);
-    var kCSS='<defs><style>.katex-mathml{position:absolute;clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px;overflow:hidden;}</style></defs>';
-    s=s.replace(/(<svg[^>]*>)/,'$1'+kCSS);
-    var blob=new Blob([s],{type:'image/svg+xml;charset=utf-8'});
-    var a=document.createElement('a');
-    a.href=URL.createObjectURL(blob);
-    a.download=(v('s-tit')||'tarsia')+'-solution.svg';
-    a.click();toast(t('btn_export_sol')+' OK');
-    VIEW=prev;if(prev!=='sol')renderAll();
-  },350);
+  setTimeout(function(){_doExportSVG('solution');VIEW=prev;if(prev!=='sol')renderAll();},350);
 }
 function exportSVGShuf(){
   var prev=VIEW;VIEW='shuf';renderAll();
-  setTimeout(function(){
-    var svg=qs('#psvg');
-    if(!svg){VIEW=prev;renderAll();return;}
-    var s=new XMLSerializer().serializeToString(svg);
-    var kCSS='<defs><style>.katex-mathml{position:absolute;clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px;overflow:hidden;}</style></defs>';
-    s=s.replace(/(<svg[^>]*>)/,'$1'+kCSS);
-    var blob=new Blob([s],{type:'image/svg+xml;charset=utf-8'});
-    var a=document.createElement('a');
-    a.href=URL.createObjectURL(blob);
-    a.download=(v('s-tit')||'tarsia')+'-melange.svg';
-    a.click();toast(t('btn_export_shuf')+' OK');
-    VIEW=prev;if(prev!=='shuf')renderAll();
-  },350);
+  setTimeout(function(){_doExportSVG('melange');VIEW=prev;if(prev!=='shuf')renderAll();},350);
 }
 function exportSVG(){
   renderAll();_doExportSVG(VIEW==='sol'?'solution':'melange');
@@ -1781,10 +1792,10 @@ function clearAllPairs(){
 }
 
 
-function svgLogoEl(x,y,w,h){
+function svgLogoEl(x,y,w,h){var op=(G.logoOpacity!==undefined?G.logoOpacity:0.28);
   if(!G.logoPrintBack)return'';
   var url=getLogoURL();if(!url)return'';
-  return'<image x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+w.toFixed(1)+'" height="'+h.toFixed(1)+'" href="'+url+'" preserveAspectRatio="xMidYMid meet" opacity="0.28"/>';
+  return'<image x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+w.toFixed(1)+'" height="'+h.toFixed(1)+'" href="'+url+'" preserveAspectRatio="xMidYMid meet" opacity="'+op+'"/>';
 }
 function backHdrSVG(title,W,H){
   var s='<rect x="0" y="0" width="'+W+'" height="'+H+'" fill="white"/>';
@@ -1865,34 +1876,26 @@ function printBack(){
   var o=getOpts();
   var back=buildBack(o);
   if(!back){toast(t('back_unavail'));return;}
-  // Switch to shuffled view and render for front page
   var prev=VIEW;VIEW='shuf';renderAll();
   setTimeout(function(){
     var svg=qs('#psvg');
     if(!svg){VIEW=prev;renderAll();return;}
-    var frontSVG=new XMLSerializer().serializeToString(svg);
-    // Restore previous view
-    VIEW=prev;renderAll();
-    // Inject katex-mathml hide CSS into front SVG
-    var kCSS='<defs><style>.katex-mathml{position:absolute;clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px;overflow:hidden;}</style></defs>';
-    frontSVG=frontSVG.replace(/(<svg[^>]*>)/,'$1'+kCSS);
-    var backSVG='<svg viewBox="0 0 '+back.w+' '+back.h+'" xmlns="http://www.w3.org/2000/svg">'+back.svg+'</svg>';
+    var frontStr=new XMLSerializer().serializeToString(svg);
+    VIEW=prev;if(prev!=='shuf')renderAll();
+    var backStr='<svg viewBox="0 0 '+back.w+' '+back.h+'" xmlns="http://www.w3.org/2000/svg">'+back.svg+'</svg>';
+    var hideCSS='.katex-mathml{position:absolute;clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px;overflow:hidden;}';
+    frontStr=frontStr.replace(/(<svg[^>]*>)/,'$1<defs><style>'+hideCSS+'</style></defs>');
     var html='<!DOCTYPE html><html><head><title>Tarsia</title>'+
       '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">'+
-      '<style>body{margin:0;padding:0;background:white}'+
-      '.pg{margin:16px auto;page-break-after:always}'+
-      '.pg:last-child{page-break-after:auto}'+
-      'h3{font-family:system-ui;font-size:11px;color:#aaa;text-align:center;margin:8px 0 2px;text-transform:uppercase}'+
-      'svg{display:block;width:100%;height:auto}'+
-      '@media print{h3{display:none}}</style>'+
+      '<style>@media print{@page{margin:1cm}}body{margin:0;padding:0;background:white}.pg{margin:16px auto;page-break-after:always}.pg:last-child{page-break-after:auto}svg{display:block;width:100%;height:auto}@media print{h3{display:none}}</style>'+
       '</head><body>'+
-      '<div class="pg"><h3>'+t('recto_label')+'</h3>'+frontSVG+'</div>'+
-      '<div class="pg"><h3>'+t('verso_label')+'</h3>'+backSVG+'</div>'+
+      '<div class="pg"><h3>'+t('recto_label')+'</h3>'+frontStr+'</div>'+
+      '<div class="pg"><h3>'+t('verso_label')+'</h3>'+backStr+'</div>'+
+      '<script>document.fonts.ready.then(function(){setTimeout(function(){window.print();},200);});<\/script>'+
       '</body></html>';
     var win=window.open('','_blank');
     if(!win){toast('Autorisez les popups pour imprimer');return;}
     win.document.open();win.document.write(html);win.document.close();
-    setTimeout(function(){if(win.print)win.print();},400);
   },350);
 }
 
@@ -1974,6 +1977,21 @@ function jumpToPair(idx){
     setTimeout(function(){pc.style.outline='';pc.style.borderRadius='';},1500);
   },80);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
